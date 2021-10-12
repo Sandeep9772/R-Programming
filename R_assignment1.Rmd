@@ -1,0 +1,203 @@
+---
+title: "R_Assignment1_Sandeep"
+author: "Sandeep"
+date: "02/10/2021"
+output: word_document
+Roll No: 2021H1540802P
+---
+
+
+### Exercise 1
+
+Find the class and type of 'x' in the following cases:- 
+
+1. x=22   // *Modify the code to create or declare an integer value.*  
+2. y= 2    
+   z=3  
+   x=y>z   
+3. x = 2i  
+4. x="20-09-2021"  
+
+```{r}
+x = 22L
+print(paste0("The class of x is ", class(x), " and the type of x is ", typeof(x)))
+
+y = 2 
+print(paste0("The class of y is ", class(y), " and the type of y is ", typeof(y)))
+
+z=3 
+print(paste0("The class of z is ", class(z), " and the type of z is ", typeof(z)))
+
+x = y>z
+print(paste0("The class of x is ", class(x), " and the type of x is ", typeof(x)))
+
+x = 2i 
+print(paste0("The class of x is ", class(x), " and the type of x is ", typeof(x)))
+
+x="20-09-2021"
+print(paste0("The class of x is ", class(x), " and the type of x is ", typeof(x)))
+
+```
+
+
+   
+### Exercise 2
+
+1. Find the output when 1+2i is converted to character type  
+2. Find output when "ProgrammingForAnalytics" is converted to numeric type
+3. Given: x<-0:5, write code to output:  
+   [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  (and)  
+   [1] "0" "1" "2" "3" "4" "5" 
+4. Given: x<-c("a","b","c")  
+   Do all possible coercions to output [1] NA NA NA  
+       
+```{r}
+x = 1+2i
+print(as.character(x))
+#as.numeric(dt_frame)
+y = "ProgrammingForAnalytics"
+print(as.numeric(y))
+
+x = 0:5
+print( x > 0)
+print(x[2:6])
+
+x = c("a", "b", "c")
+as.numeric(x)
+as.double(x)
+as.logical(x)
+as.integer(x)
+as.complex(x)
+```
+
+
+### Exercise 3
+
+Fill the table with your understanding of Data Structures (Atomic vector, List, Dataframe, Array, Matrix)
+
+|                |   Linear    |   2 Dimensional   | N Dimensional |
+|----------------|-------------|-------------------|---------------|
+|**Homogenous**  |atomic vector|       matrix      |    array      |
+|**Heterogenous**|    list     |     data frame    |               |  
+
+
+### Exercise 4
+
+Create a vector with a sequence of descending numbers from 20 to 0 in steps of 2. 
+
+(i) Write code to access all except the 2nd to 5th elements.
+(ii) Write code to access all numbers greater than 10 excluding the one at 2nd index.
+(iii) Write code to change values of all elements less than 10 to 0.
+
+```{r}
+x = seq(20, 0, -2)
+
+print (x[-(2:5)])
+
+v = x[x>10]
+print(v[-2])
+
+x[x<10] = 0
+print(x)
+```
+
+    
+### Exercise 5   
+    
+Create a matrix with 2 columns and 4 rows by passing a vector having 4 repetitions of 1 and 2 (i.e., 1,2,1,2,... use rep() command). Arrange these elements in a row-wise manner.
+
+(i) Write code to access the 2nd column of this matrix.  
+(ii) Name the columns: "c1", "c2". Name the rows: "r1", "r2", "r3", "r4".  
+(iii) Write code to access the 2nd row using its row name.  
+(iv) Delete the first row
+
+```{r}
+x = rep(c(1,2), 4)
+m = matrix(data = x, nrow = 4, ncol = 2,byrow = TRUE)
+print(m)
+
+colnames(m) = c("c1", "c2")
+rownames(m) = c("r1", "r2", "r3", "r4")
+print(m)
+
+m["r2", ]
+
+m = m[-1,]
+print(m)
+```
+
+### Exercise 6
+
+(i) Create a vector "V" which contains 10 random integer values between -100 and +100. (hint:)
+(ii) Create a two-dimensional 5×5 array "A" comprised of sequence of even integers greater than 25.
+(iii) Create a list "S" containing sequence of 20 capital letters, starting with ‘C’.  
+
+Create a list named "l" containing all the previously created objects. Name them "my_vector", "my_array"  and "my_list" respectively.  
+
+Without running any R command, answer the following questions pertaining to the exercise :-
+
+1. How many elements are there in the list? 
+2. what is the result of l[[3]]?
+3. How would you access random-th letter in the list element "my_list"?
+4. If you convert list l to a vector, what will be the type of it’s elements?
+5. Can this list be converted to an array? What will be the data type of elements in array?
+6. How would you add a new element to this list?
+
+Answers 
+1. 20
+2. my_list.
+3. l[[3]][[n]].
+4. The type of elements will remain same.
+5. Yes it can be converted to array. The data type of elements will be character.
+6. Functions like append and insert can be used to add new elements to the list.
+       
+### Exercise 7
+
+Write a program to create a Data Frame by passing vectors for name (character), age (integer) and vaccinated (logical). 
+
+1. Print the number of rows using dim().
+2. Write code to change the age column into complex data type.
+3. Use "as" function to check if dataframes can be coerced into other data types or data structures.
+
+```{r}
+
+dt_frame = data.frame(names = c("sandeep", "anoop", "sowgandh", "sai"),
+age = c(24, 25, 30, 18),
+vacc = c(TRUE, FALSE, FALSE, TRUE))
+
+dim(dt_frame)
+
+class(dt_frame$age) = "complex"
+print(class(dt_frame$age))
+
+as.numeric(dt_frame) # gives error
+as.character(dt_frame) # does not throw errors
+as.complex(dt_frame)# gives error
+as.logical(dt_frame)# gives error
+```
+
+
+### Exercise 8
+
+Debug the following and run the correct code  
+1. num = c(1, 2, 3, 4, 5)  
+   name = c("one", "two", "four", "five")  
+   df = data.frame(num,name)  
+   print(df)  
+2. x = c(1, "BITS", 5, 7.2, True, 1+i)  
+   print(X)
+   
+1. The number of rows are mismatched which is why the data frame creation throws error.
+```{r}
+#corrected code
+num = c(1, 2, 3, 4, 5) 
+name = c("one", "two", "three", "four", "five") 
+df = data.frame(num,name)
+```
+
+2. The i is treated as a variable by itself anf throws error. The last element should be 1+1i. R is case sensitive and does not treat True and TRUE as same. The logical value must be passed as TRUE. Similarly the variable should be "x" not "X" in print statement.
+```{r}
+X = c(1, "BITS", 5, 7.2, TRUE, 1+1i)
+print(X)
+```
+

@@ -1,0 +1,26 @@
+---
+title: "ANOVA"
+author: "Sandeep"
+date: "05/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+city <- c("D","D","D","D","D","D","M","M","M","M","M","M","K","K","K","K","K","K","C","C","C","C","C","C")
+price <- c(22,22.5,21.5,22,22.5,21.5,19,19.5,19,20,19,21,18,17,18.5,17,18.5,17,21,20,21.5,20,21,20)
+aov.mod <- aov(price~city)
+summary(aov.mod)
+library(dplyr)
+city_price <-read.csv("C:/Users/SANDEEP K/Desktop/New Microsoft Excel Worksheet.csv") 
+glimpse(city_price)
+library(ggplot2)
+ggplot(city_price, aes(x=city, y=price))+geom_boxplot()
+data.lm <- lm(city_price$Price~city_price$City, data=city_price)
+data.lm
+data.aov <- aov(data.lm)
+summary(data.aov)
+data.test <- TukeyHSD(data.aov)
+data.test
+
+```
+

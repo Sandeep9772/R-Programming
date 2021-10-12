@@ -1,0 +1,244 @@
+---
+title: "R_Assignment2"
+author: "Sandeep"
+date: "09/10/2021"
+output: pdf_document
+ID No: 2021H1540802P
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Basic 
+
+1. Write a function that takes two numbers, a and b, as arguments, and returns a raised to the power b.
+
+    + Challenge 1: Try to generate the numbers a and b randomly in the range of 1 to 10 as part of the function. (Clue: Google - `sample` function)
+    + Challenge 2: Initialize the number a as a vector and try to return a vector with each element of a raised to the number b.
+
+
+```{r}
+#Challenge1
+powerfunc<-function(a,b)
+{
+  print(a)
+  print(b)
+  print (a^b)
+}
+a<-c(1:10)
+b<-c(1:10)
+powerfunc(sample(a,1),sample(b,1))
+
+```
+```{r}
+#Challenge2
+powerfunc<-function(a,b)
+{
+  print(b)
+  print(a^b)
+}
+a<-c(1:4)
+powerfunc(a,sample(b,1))
+
+```
+ 
+2. Write a function that takes a number as argument and returns true if it is divisible by 2, 3, 5, 7, 11, 13, and false otherwise.
+    
+    + Challenge: Randomize the number that needs to be given as an argument to the function in the range from 1 to 1000.
+ 
+```{r}
+
+divi<-function(num)
+{
+  print(num)
+  if (num %% 2 == 0 && num %% 3 == 0 && num %% 5 == 0 && num %% 7 == 0 && num %% 11 == 0 && num %% 13 == 0)
+  {
+    return (TRUE)
+  }
+  else
+    return (FALSE)
+}
+num <- 1:1000
+divi(sample(num,1))
+
+```
+3. Write a function that takes a non-negative integer as its argument and returns its factorial.
+
+    + Challenge: Do not use the built-in function factorial()
+    
+```{r}
+factorial<-function(num)
+{
+  fact = 1
+  my_range <- num:1
+  for( i in my_range)
+  {
+    if ( i == 0 || i == 1)
+    {
+      fact <- fact * 1
+    }
+    else
+    {
+      fact <- fact * num
+      num <- num-1
+    }
+  }
+  print(fact)
+}
+
+
+```
+
+4. Write a function to compute the dot product of two vectors.
+    
+    + Challenge 1: Do not use in-built R functions.(Clue: Iterative algorithm)
+    + Challenge 2: Vectors should be of arbitrary length.
+```{r}
+
+dotpdt<-function(a,b)
+{
+  total=0
+  print(a)
+  print(b)
+  if(length(a)>length(b))
+  {
+    my_range <- 1 : length (b) 
+    for ( i in my_range )
+    {
+      total<-total+a[i]*b[i]  
+    }
+  }
+  else if(length(b)>length(a))
+  {
+    my_range <- 1 : length (a) 
+    for ( i in my_range )
+    {
+      total<-total+a[i]*b[i]  
+    }
+  }
+  else
+  {
+    my_range <- 1 : length (a) 
+    for ( i in my_range )
+    {
+      total<-total+a[i]*b[i]  
+    }
+  }
+  print(total)
+}
+
+dotpdt(c(6,8),c(2,4,7))
+dotpdt(c(3,6,8),c(2,4,7))
+dotpdt(c(3,6,8),c(2,4))
+
+```
+5. Write a function that takes a numeric vector and prints on screen the mean and standard deviation.
+  
+    + Challenge: Do not use in-built R functions.
+    
+```{r}
+calc<-function(vect)
+{
+  add=0
+  print(vect)
+  for( i in vect)
+  {
+    add=add+i
+  }
+  meanval = add/length(vect)
+  sd = sqrt(sum((vect-meanval)^2)/length(vect))
+  print(meanval)
+  print(sd)  
+}
+vect<-c(5,10,15,20)
+calc(vect)
+
+```
+6. Write a function given that takes a vector as its argument and returns a new vector with the elements of the first vector with duplicated elements removed.   
+    
+    + HINT: Iterate through the vector checking for duplicate elements.
+
+
+```{r}
+dup_list<-function(a)
+{
+i=1
+while (i <= length(a))
+{
+  j=i+1
+  while(j <= length(a))
+  {
+    if(a[i]==a[j])
+      a<-a[-i]
+    else
+      j=j+1
+  }
+  i=i+1
+}
+print(a)
+}
+dup_list(c(1,1,2,3,3,4,5,6,6))
+```
+
+7. Write a function to find out the factors of a positive integer. 
+    
+    + Challenge: Find 2 different solutions. 
+    + HINT (For 1st solution): Look up the R documentation for functions such as `lapply`
+    + HINT (For 2nd solution): `Vectorize` and `Filter` functions may be of some help.
+    
+```{r}
+#Challenge1
+factors<-function(number)
+{
+  vec <- 1: number
+  for ( i in vec )
+  {
+  if( number %% i == 0)
+  {
+    print(i)
+  }
+  }
+}
+factors(24)
+
+```
+```{r}
+
+#Challenge2
+fact<-Vectorize(factors)
+factors(24)
+
+
+```
+8. Write a function that prints out the value of the Ackermann Function after entering two numbers as input. (Picked up this problem because it reminds me of 'Attack on Titan', PS: It's an anime!)   
+  
+    + This problem will introduce you to the concept of recursive functions. (Definitely, do a Google Search on recursive functions!) An image describing the Ackermann Function has been given below.
+    
+![](./images/ackermann.png)
+    
+    + Hint: Problem requires use of if-else statements.
+    
+    + No challenges have been provided for this problem, as the problem is a challenge in itself. :)
+```{r}
+ackermann<-function(a,b)
+{
+  if(a==0)
+  {
+    b+1
+  }
+  else if(a>0 && b==0)
+  {
+    ackermann(a-1,1)
+  }
+  else if(a>0 && b>0)
+  {
+    ackermann(a-1,ackermann(a,b-1))
+  }
+}
+
+print(ackermann(0,50))
+
+
+```
+

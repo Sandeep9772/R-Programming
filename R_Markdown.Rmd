@@ -1,0 +1,96 @@
+---
+title: "R Markdown-1"
+author: "Sandeep"
+date: "21/09/2021"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+## What is R Markdown?
+Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.
+
+## Why Use Markdown?
+- Markdown can be used for everything. People use it to create websites, documents, notes, books, presentations, email messages, and technical documentation.
+- Markdown is portable.
+- Markdown is platform independent. You can create Markdown-formatted text on any device running any operating system.
+- Markdown is everywhere. Websites like Reddit and GitHub support Markdown, and lots of desktop and web-based applications support it.
+
+
+R Markdown is an open-source tool for producing reproducible reports in R. It enables you to keep all of your code, results, plots, and writing in one place. 
+R Markdown provides an authoring framework for data science. You can use a single R Markdown file to both :-   
+
+1. save and execute code. 
+2. generate high quality reports that can be shared with an audience.  
+
+
+R Markdown documents are fully reproducible and support dozens of static and dynamic output formats.  
+
+R Markdown is particularly useful when you are producing a document for an audience that is interested in the results from your analysis, but not your code.  
+
+With R Markdown, you have the option to export your work to numerous numerous formats including PDF, Microsoft Word, a slideshow, or an HTML document for use in a website.  
+
+We’ll use the RStudio integrated development environment (IDE) to produce our R Markdown reference guide.  
+
+
+## Workflow:
+1. Open a new .Rmd File
+2. Write/ Edit your document - add tables, figures, citations, etc.
+3. Knit document to create report - set output formats and options in the YAML header
+4. Save and Render
+5. Share your work(if interested)
+
+
+# Name
+## *Kalam Sai Sandeep*
+### ~~2021H1540802~~
+[Pratap]{.smallcaps}
+
+
+This is a sample program in R_Markdown
+
+![Sandeep](C:/Users/SANDEEP K/Downloads/Sandeep.Passport.jpg)
+
+```
+ manufacturer    displ   hwy     class
+-------------    ------  -----  ---------
+        audi     1.8     29      compact
+   chevrolet     5.3     20        suv
+       dodge     2.4     24      minivan
+Table: Simple table syntax and caption.
+```
+
